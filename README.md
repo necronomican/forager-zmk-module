@@ -8,6 +8,28 @@ Featuring the awesome [zmk-rgbled-widget by caksoylar](https://github.com/caksoy
 
 # Usage
 
+## Build Locally
+
+Setup a local environment for ZMK development by following the ZMK Docs.
+Clone the necessary modules and replace the paths accordingly.
+
+**Prospector Dongle**
+```
+west build -p -b seeeduino_xiao_ble -S studio-rpc-usb-uart -- -DSHIELD="forager_dongle prospector_adapter rgbled_adapter" -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/zmk-modules/zmk-rgbled-widget;/workspaces/zmk-modules/zmk-modules/forager-zmk-module;/workspaces/zmk-modules/zmk-modules/prospector-zmk-module"
+```
+
+**Left Forager**
+```
+west build -p -b seeeduino_xiao_ble -- -DSHIELD="forager_left    rgbled_adapter" -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/zmk-modules/zmk-rgbled-widget;/workspaces/zmk-modules/zmk-modules/forager-zmk-module;/workspaces/zmk-modules/zmk-modules/prospector-zmk-module"
+```
+
+**Right Forager**
+```
+west build -p -b seeeduino_xiao_ble -- -DSHIELD="forager_right rgbled_adapter" -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/zmk-modules/zmk-rgbled-widget;/workspaces/zmk-modules/zmk-modules/forager-zmk-module;/workspaces/zmk-modules/zmk-modules/prospector-zmk-module"
+```
+
+## Github Actions
+
 Add these lines to `config/west.yml` in your `zmk-config` repository:
 
 ```yaml
