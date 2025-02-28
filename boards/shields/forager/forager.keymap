@@ -4,23 +4,27 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define BASE 0
-#define NAV  1
-#define SYM  2
-#define ADJ  3
-
-#define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
-#define MEH LS(LC(LALT))
+#define SYM  1
+#define NAV  2
+#define TOP  3
 
 / {
     behaviors {
-        as: auto_shift {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            require-prior-idle-ms = <100>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+
+        combo_boot_l {
+            timeout-ms = <50>;
+            key-positions = <0 1 2>;
+            bindings = <&bootloader>;
+			require-prior-idle-ms = <3000>;
         };
+
+        combo_boot_r {
+            timeout-ms = <50>;
+            key-positions = <7 8 9>;
+            bindings = <&bootloader>;
+			require-prior-idle-ms = <3000>;
+        };
+
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -28,26 +32,7 @@
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
-        sabk: shift_to_alt_backspace {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp BSPC>, <&kp LA(BSPC)>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        smart_shift: smart_shift {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&sk LSHFT>, <&caps_word>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        sym_bspc: left_thumb_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <150>;
-            quick-tap-ms = <200>;
-            bindings = <&mo>, <&sabk>;
-        };
+
         lhm: left_homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -81,55 +66,40 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base {
+        base_layer {
             bindings = <
-            &kp Q           &kp W           &kp F           &kp P           &kp B                                           &kp J           &kp L           &kp U           &kp Y           AS(SEMI)
-            &kp A           &lhm LCTRL R    &lhm LALT S     &lhm LGUI T     &kp G                                           &kp M           &rhm LGUI N     &rhm LALT E     &rhm LCTRL I    &kp O
-            &kp Z           &kp X           &kp C           &kp D           &kp V                                           &kp K           &kp H           AS(COMMA)       AS(DOT)         AS(FSLH)
-                                                                            &sym_bspc 2 0   &smart_shift    &smart_shift    &lt NAV SPACE
+                &kp Q       &kp W       &kp F       &kp P       &kp G           &kp J       &kp L       &kp U       &kp Y       &kp SEMI
+                &kp A       &kp R       &kp S       &kp T       &kp D           &kp H       &kp N       &kp E       &kp I       &kp O
+                &ht LSHFT Z &kp X       &kp C       &kp V       &kp B           &kp K       &kp M       &kp COMMA   &kp DOT     &ht RSHFT RET
+                                                    &mt LCTRL BSPC &lt 1 ESC      &kp SPACE   &lt 2 TAB
             >;
         };
 
-        nav {
+        sym_layer {
             bindings = <
-            &trans          &trans          &trans          &trans          &trans                                          &kp PAGE_UP     &kp LC(PG_UP)   &kp UP          &kp LC(PG_DN)   &kp DELETE
-            &trans          &kp LCTRL       &kp LALT        &kp LGUI        &trans                                          &kp PAGE_DOWN   &kp LEFT        &kp DOWN        &kp RIGHT       &kp BSLH
-            &trans          &trans          &trans          &trans          &trans                                          &trans          &kp HOME        &kp END         &kp LC(SPACE)   &kp LC(SPACE)
-                                                                            &mo SYM         &kp LSHFT       &trans          &trans
+                &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(N4)  &kp LS(N5)      &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)  &kp LS(N0)
+                &kp LGUI   &kp LALT      &trans      &trans      &trans          &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &kp LS(SQT)
+                &trans      &trans      &trans      &trans      &kp PSCRN       &kp MINUS   &kp EQUAL   &trans      &trans      &kp LS(FSLH)
+                                                    &trans      &trans          &trans      &trans
             >;
         };
 
-        sym {
+        nav_layer {
             bindings = <
-            AS(N1)          AS(N2)          AS(N3)          AS(N4)          AS(N5)                                          AS(N6)          AS(N7)          AS(N8)          AS(N9)          AS(N0)
-            AS(GRAVE)       &sk LCTRL       &sk LALT        &sk LGUI        &sk LC(LALT)                                    AS(BSLH)        AS(MINUS)       AS(EQUAL)       AS(LBKT)        AS(RBKT)
-            &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &kp ENTER
-                                                                            &trans          &trans          &kp LSHFT       &mo NAV
+                &kp N1      &kp N2      &kp N3      &kp N4      &kp N5          &kp N6      &kp N7      &kp N8      &kp N9      &kp N0
+                &kp GRAVE   &trans      &trans      &trans      &trans          &kp LBKT    &kp RBKT    &kp RBKT    &kp RBKT    &kp SQT
+                &trans      &trans      &caps_word  &trans      &trans          &trans      &kp DEL     &kp C_BRI_DN &kp C_BRI_UP &kp FSLH
+                                                    &trans      &trans          &trans      &trans
             >;
         };
 
-        adj {
+        top_layer {
             bindings = <
-            &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_CLR_ALL                                  &kp C_SLEEP     &trans          &trans          &kp C_BRI_DN    &kp C_BRI_UP
-            &studio_unlock  &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &kp C_VOL_DN    &kp C_VOL_UP
-            &bootloader     &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &bootloader
-                                                                            &trans          &trans          &trans          &trans
+                &kp F1      &kp F2      &kp F3      &kp F4      &kp F5          &kp F6      &kp F7      &kp F8      &kp F9      &kp F10
+                &kp F11     &kp F12     &bt BT_SEL 0   &bt BT_SEL 1       &bt BT_SEL 2           &out OUT_TOG       &bt BT_CLR_ALL       &none       &none       &none
+                &none       &none       &none       &studio_unlock       &bootloader           &bootloader	&studio_unlock       &none       &none       &none
+                                                    &trans      &trans          &trans      &trans
             >;
         };
     };
-};
-
-&lt {
-    // require-prior-idle-ms = <100>;
-    tapping-term-ms = <150>;
-    quick-tap-ms = <200>;
-};
-
-&mt {
-    quick-tap-ms = <200>;
-};
-
-&sk {
-    release-after-ms = <500>;
-    quick-release;
 };
