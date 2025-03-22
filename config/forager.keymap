@@ -39,14 +39,23 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        ent {
+            bindings = <&kp ENTER>;
+            key-positions = <16 17 18>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         base {
             bindings = <
-&kp Q  &kp W               &kp T              &kp P                &kp B      &kp J      &kp L                 &kp U              &kp Y               &kp SEMI
-&kp A  &mt_simple LCTRL R  &mt_simple LALT S  &mt_simple LGUI F    &kp G      &kp M      &mt_simple LGUI N     &mt_simple LALT E  &mt_simple LCTRL I  &kp O
-&kp Z  &kp X               &kp C              &kp D                &kp V      &kp K      &kp H                 &kp COMMA          &kp DOT             &kp FSLH
+&kp Q  &kp W               &kp E              &kp R                &kp T      &kp Y      &kp U                 &kp I              &kp O               &kp P
+&kp A  &mt_simple LCTRL S  &mt_simple LALT D  &mt_simple LGUI F    &kp G      &kp H      &mt_simple LGUI J     &mt_simple LALT K  &mt_simple LCTRL L  &kp SEMI
+&kp Z  &kp X               &kp C              &kp V                &kp B      &kp N      &kp M                 &kp COMMA          &kp DOT             &kp FSLH
                                               &lt_simple SYM BSPC  &kp LSHFT  &kp LSHFT  &lt_simple NAV SPACE
             >;
         };
