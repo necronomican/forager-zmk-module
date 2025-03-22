@@ -46,6 +46,11 @@
             bindings = <&kp ENTER>;
             key-positions = <16 17 18>;
         };
+
+        escape_combo {
+            bindings = <&kp ESCAPE>;
+            key-positions = <2 1>;
+        };
     };
 
     keymap {
