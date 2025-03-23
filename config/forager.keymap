@@ -54,7 +54,7 @@
 
         tag_combo {
             bindings = <&kp TAB>;
-            key-positions = <13 14>;
+            key-positions = <11 12 13>;
         };
     };
 
