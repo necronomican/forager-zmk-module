@@ -42,7 +42,7 @@
     combos {
         compatible = "zmk,combos";
 
-        ent {
+        enter_combo {
             bindings = <&kp ENTER>;
             key-positions = <16 17 18>;
         };
@@ -50,6 +50,11 @@
         escape_combo {
             bindings = <&kp ESCAPE>;
             key-positions = <2 1>;
+        };
+
+        tag_combo {
+            bindings = <&kp TAB>;
+            key-positions = <13 14>;
         };
     };
 
@@ -69,7 +74,7 @@
             bindings = <
 &trans  &trans     &trans    &trans    &trans     &kp PAGE_UP    &kp LC(PG_UP)  &kp UP    &kp LC(PG_DN)  &kp DELETE
 &trans  &kp LCTRL  &kp LALT  &kp LGUI  &trans     &kp PAGE_DOWN  &kp LEFT       &kp DOWN  &kp RIGHT      &kp BSLH
-&trans  &trans     &trans    &trans    &trans     &trans         &kp HOME       &kp END   &kp LC(SPACE)  &kp LC(SPACE)
+&trans  &trans     &trans    &trans    &mo 4      &trans         &kp HOME       &kp END   &kp LC(SPACE)  &kp LC(SPACE)
                              &mo SYM   &kp LSHFT  &trans         &trans
             >;
         };
@@ -92,7 +97,7 @@
             >;
         };
 
-        layer_4 {
+        fkey {
             bindings = <
 &kp F1   &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
 &kp F11  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp F11
