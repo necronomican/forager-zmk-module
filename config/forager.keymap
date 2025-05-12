@@ -119,7 +119,7 @@
             bindings = <
 &wrkspcleft               &wrkspcshftrght       &altctrllft           &altctrlrgt       &altf2     &kp PAGE_UP    &kp LC(PG_UP)  &kp UP    &kp LC(PG_DN)  &kp DELETE
 &trans                    &kp LCTRL             &kp LALT              &kp LGUI          &trans     &kp PAGE_DOWN  &kp LEFT       &kp DOWN  &kp RIGHT      &kp BSLH
-&kp LS(LA(LC(UP_ARROW)))  &kp LS(LA(LC(DOWN)))  &kp LA(LC(UP_ARROW))  &kp LC(LA(DOWN))  &mo 4      &trans         &kp HOME       &kp END   &kp LC(SPACE)  &kp LC(SPACE)
+&kp LS(LC(LG(UP_ARROW)))  &kp LS(LC(LG(DOWN)))  &kp LC(LG(UP_ARROW))  &kp LA(LG(DOWN))  &mo 4      &trans         &kp HOME       &kp END   &kp LC(SPACE)  &kp LC(SPACE)
                                                                       &mo 2             &kp LSHFT  &trans         &trans
             >;
         };
