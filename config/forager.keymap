@@ -74,6 +74,11 @@
             bindings = <&kp TAB>;
             key-positions = <11 12 13>;
         };
+
+        colmak-dh-toggle {
+            bindings = <&tog 6>;
+            key-positions = <1 2 0 3>;
+        };
     };
 
     macros {
