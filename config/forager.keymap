@@ -37,6 +37,15 @@
             #binding-cells = <0>;
             mods = <(MOD_LALT)>;
         };
+
+        mod_morph_sqto: mod_morph_sqto {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_MORPH_SQTO";
+            bindings = <&kp O>, <&kp SQT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT)>;
+        };
     };
 
     conditional_layers {
@@ -118,7 +127,7 @@
         base {
             bindings = <
 &kp Q  &kp W                  &kp E               &kp R              &kp T           &kp Y           &kp U                   &kp I               &kp O               &kp P
-&kp A  &mt_simple LEFT_ALT S  &mt_simple LCTRL D  &mt_simple LGUI F  &kp G           &kp H           &mt_simple RIGHT_GUI J  &mt_simple RCTRL K  &mt_simple LCTRL L  &mod_morph_sqt
+&kp A  &mt_simple LEFT_ALT S  &mt_simple LCTRL D  &mt_simple LGUI F  &kp G           &kp H           &mt_simple RIGHT_GUI J  &mt_simple RCTRL K  &mt_simple LCTRL L  &mod_morph_sqto
 &kp Z  &kp X                  &kp C               &kp V              &lt_simple 3 B  &lt_simple 5 N  &kp M                   &kp COMMA           &kp DOT             &kp FSLH
                                                   &lt_simple 2 BSPC  &kp LSHFT       &kp LSHFT       &lt_simple 1 SPACE
             >;
@@ -179,6 +188,17 @@
             >;
 
             label = "FUNC";
+        };
+
+        COLMAK-DH {
+            bindings = <
+&kp Q  &kp W                  &kp F               &kp P              &kp B   &kp J   &kp L              &kp U               &kp Y              &kp SEMI
+&kp A  &mt_simple LEFT_ALT R  &mt_simple LCTRL S  &mt_simple LGUI T  &kp G   &kp M   &mt_simple RGUI N  &mt_simple LCTRL E  &mt_simple LALT I  &mod_morph_sqto
+&kp Z  &kp X                  &kp C               &kp D              &kp V   &kp K   &kp H              &kp COMMA           &kp DOT            &kp FSLH
+                                                  &trans             &trans  &trans  &trans
+            >;
+
+            label = "COLMAK-DH";
         };
     };
 };
