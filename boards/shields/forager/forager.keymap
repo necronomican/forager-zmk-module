@@ -197,10 +197,10 @@
 
         COLMAK-DH {
             bindings = <
-&kp Q  &kp W                  &kp F               &kp P              &kp B           &kp J           &kp L              &kp U               &kp Y              &kp SEMI
-&kp A  &mt_simple LEFT_ALT R  &mt_simple LCTRL S  &mt_simple LGUI T  &kp G           &kp M           &mt_simple RGUI N  &mt_simple LCTRL E  &mt_simple LALT I  &mod_morph_sqto
-&kp Z  &kp X                  &kp C               &kp D              &lt_simple 3 V  &lt_simple 5 K  &kp H              &kp COMMA           &kp DOT            &kp FSLH
-                                                  &trans             &trans          &trans          &trans
+&kp Q  &kp W                  &kp F               &kp P              &kp B                  &kp J           &kp L              &kp U               &kp Y              &kp SEMI
+&kp A  &mt_simple LEFT_ALT R  &mt_simple LCTRL S  &mt_simple LGUI T  &kp G                  &kp M           &mt_simple RGUI N  &mt_simple LCTRL E  &mt_simple LALT I  &mod_morph_sqto
+&kp Z  &kp X                  &kp C               &kp D              &lt_simple 3 V         &lt_simple 5 K  &kp H              &kp COMMA           &kp DOT            &kp FSLH
+                                                   &lt_simple 2 BSPC  &kp LSHFT             &kp LSHFT       &lt_simple 1 SPACE
             >;
 
             label = "COLMAK-DH";
